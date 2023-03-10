@@ -1,7 +1,8 @@
 import React from 'react';
-import SongList from './components/song-list';
-import SongFilter from './components/song-filter';
+import SongList from './components/SongList';
+import SongFilter from './components/SongFilter';
 import Header from './components/Header';
+import CoverArt from './images/default.png'
 
 function App() {
   const [songs, setSongs] = React.useState([] as SongItem[])
@@ -14,7 +15,7 @@ function App() {
         link: "https://www.youtube.com/watch?v=ulOde9limgw",
         copyrightYear: 2022,
         yearWritten: 2005,
-        coverart: "./images/default.png",
+        coverart: CoverArt
       },
       {
         name: "Jamie (The Tiger Lily)",
@@ -22,7 +23,7 @@ function App() {
         link: "https://www.youtube.com/watch?v=_ruaYOw0n54",
         copyrightYear: 2015,
         yearWritten: 2015,
-        coverart: "./images/default.png",
+        coverart: CoverArt
       },
       {
         name: "Shiloh and Me",
@@ -30,7 +31,7 @@ function App() {
         link: "https://www.youtube.com/watch?v=ffSDJGnmsig",
         copyrightYear: 2022,
         yearWritten: 2022,
-        coverart: "./images/default.png",
+        coverart: CoverArt
       }
     ]
 
