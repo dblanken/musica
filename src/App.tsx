@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SongList from './components/song-list';
+import SongFilter from './components/song-filter';
 
 function App() {
+  const [items, setitems] = React.useState([] as SongItem[])
+
+  document.addEventListener('onSearched', (e: any) => {
+    const theItems : Array<SongItem> = [
+      {
+        name: "Walkies in the Park"
+      },
+      {
+        name: "Dargalot of Camdor"
+      }
+    ]
+
+    let result:Array<SongItem> = theItems;
+
+    if (e.detail)
+      result = theItems.filter(item => item.name.includes(e.detail));
+
+    if (!result)
+      result = []
+
+    setitems(result);
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SongFilter />
+      <SongList items={items}/>
     </div>
   );
 }
