@@ -1,38 +1,60 @@
 import React from 'react';
-import './App.css';
 import SongList from './components/song-list';
 import SongFilter from './components/song-filter';
+import Header from './components/Header';
 
 function App() {
-  const [items, setitems] = React.useState([] as SongItem[])
+  const [songs, setSongs] = React.useState([] as SongItem[])
 
   document.addEventListener('onSearched', (e: any) => {
-    const theItems : Array<SongItem> = [
+    const songs : SongItem[] = [
       {
-        name: "Walkies in the Park"
+        name: "Darglot of Camdor",
+        length: { minutes: 4, seconds: 24 },
+        link: "https://www.youtube.com/watch?v=ulOde9limgw",
+        copyrightYear: 2022,
+        yearWritten: 2005,
+        coverart: "./images/default.png",
       },
       {
-        name: "Dargalot of Camdor"
+        name: "Jamie (The Tiger Lily)",
+        length: { minutes: 3, seconds: 35 },
+        link: "https://www.youtube.com/watch?v=_ruaYOw0n54",
+        copyrightYear: 2015,
+        yearWritten: 2015,
+        coverart: "./images/default.png",
+      },
+      {
+        name: "Shiloh and Me",
+        length: { minutes: 3, seconds: 35 },
+        link: "https://www.youtube.com/watch?v=ffSDJGnmsig",
+        copyrightYear: 2022,
+        yearWritten: 2022,
+        coverart: "./images/default.png",
       }
     ]
 
-    let result:Array<SongItem> = theItems;
-
-    if (e.detail)
-      result = theItems.filter(item => item.name.includes(e.detail));
-
-    if (!result)
-      result = []
-
-    setitems(result);
+    setSongs(filterSongsByName(songs, e.detail));
   });
 
   return (
     <div className="App">
+      <div className="row">
+        <Header />
+      </div>
       <SongFilter />
-      <SongList items={items}/>
+      <SongList items={songs}/>
     </div>
   );
+}
+
+function filterSongsByName(songs:SongItem[], searchTerm: string) : SongItem[] {
+  searchTerm = searchTerm.toLowerCase();
+
+  if (!searchTerm)
+  return songs;
+
+  return songs.filter(song => song.name.toLowerCase().includes(searchTerm)) || [];
 }
 
 export default App;

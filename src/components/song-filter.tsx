@@ -14,8 +14,12 @@ function SongFilter() {
 
   return (
     <div className="filter">
-      <label>Filter by:</label>
-      <input type="text" id="search" onChange={onChangeHandler} />
+      <form>
+        <div className="form-group">
+          <label>Filter by:</label>
+          <input type="text" id="search" onChange={onChangeHandler} className="form-control" />
+        </div>
+      </form>
     </div>
   );
 }

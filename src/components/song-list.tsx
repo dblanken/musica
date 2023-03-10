@@ -7,9 +7,9 @@ type SongListProps = {
 
 function SongList(props: SongListProps) {
   return (
-    <div className="songList">
+    <div className="songList row align-items-start">
       {props.items.map((item:any) => (
-          <Song key={item.name} name={item.name} />
+          <Song key={item.name} song={item} />
         ))}
     </div>
   );
