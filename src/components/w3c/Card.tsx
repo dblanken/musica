@@ -1,5 +1,6 @@
 import React from 'react';
 import defaultPng from "../../images/default.png";
+import './card.css'
 
 type CardProps = {
   img: string,
@@ -11,11 +12,11 @@ type CardProps = {
 
 function Card(props: CardProps) {
   return (
-    <div className="card col m-3">
+    <div className="small-card card col m-3">
       <img src={propsImage(props.img)} className="card-img-top" alt={props.title} />
       <div className="card-body">
         <h5 className="card-title">{props.title}</h5>
-        <p className="card-text">{props.children}</p>
+        <div className="card-text">{props.children}</div>
         <a href={props.url} className="btn btn-primary">{props.urlText}</a>
       </div>
     </div>
