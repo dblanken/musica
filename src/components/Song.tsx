@@ -9,7 +9,7 @@ type SongProps = {
 function Song({song}: SongProps) {
   return (
     <>
-      <Card title={song.name} img={song.coverart} text={cardText(song)} url={song.link} urlText="Listen">
+      <Card title={song.name} img={song.coverart} url={song.link} urlText="Listen">
         <div>
           <div>
             {song.length.minutes}:{song.length.seconds}
