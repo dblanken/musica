@@ -1,5 +1,5 @@
 import React from 'react';
-import Song from './song';
+import Song from './Song';
 
 type SongListProps = {
   items: SongItem[]
