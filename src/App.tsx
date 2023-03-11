@@ -40,9 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="row">
-        <Header />
-      </div>
+      <Header />
       <SongFilter />
       <SongList items={songs}/>
     </div>
