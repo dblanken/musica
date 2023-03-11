@@ -16,7 +16,7 @@ function SongFilter() {
     <div className="filter">
       <form>
         <div className="form-group">
-          <label>Filter by:</label>
+          <label htmlFor="search">Filter by:</label>
           <input type="text" id="search" onChange={onChangeHandler} className="form-control" />
         </div>
       </form>
