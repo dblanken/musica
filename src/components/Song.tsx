@@ -15,7 +15,7 @@ function Song({song}: SongProps) {
             {song.length.minutes}:{song.length.seconds}
           </div>
           <div>
-            Copyright {song.copyrightYear}
+            Copyright &copy; {song.copyrightYear}
           </div>
           <div>
               Written {song.yearWritten}
