@@ -14,11 +14,13 @@ function Song({song}: SongProps) {
           <div>
             {song.length.minutes}:{song.length.seconds}
           </div>
-          <div>
-            Copyright &copy; {song.copyrightYear}
-          </div>
-          <div>
+          <div className="row">
+            <div className="mx-auto col">
+              Copyright &copy; {song.copyrightYear}
+            </div>
+            <div className="text-end col">
               Written {song.yearWritten}
+            </div>
           </div>
         </div>
       </Card>
