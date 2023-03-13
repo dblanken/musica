@@ -7,7 +7,7 @@ import CoverArt from './images/default.png'
 function App() {
   const [songs, setSongs] = React.useState([] as SongItem[])
 
-  document.addEventListener('onSearched', (e: any) => {
+  function onSearched(searchTerm : string) {
     const songs : SongItem[] = [
       {
         name: "Darglot of Camdor",
@@ -35,13 +35,13 @@ function App() {
       }
     ]
 
-    setSongs(filterSongsByName(songs, e.detail));
-  });
+    setSongs(filterSongsByName(songs, searchTerm));
+  }
 
   return (
     <div className="App">
       <Header />
-      <SongFilter />
+      <SongFilter onSearchedCallback={onSearched} />
       <SongList items={songs}/>
     </div>
   );
@@ -51,7 +51,7 @@ function filterSongsByName(songs:SongItem[], searchTerm: string) : SongItem[] {
   searchTerm = searchTerm.toLowerCase();
 
   if (!searchTerm)
-  return songs;
+    return songs;
 
   return songs.filter(song => song.name.toLowerCase().includes(searchTerm)) || [];
 }
