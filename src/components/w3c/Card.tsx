@@ -1,6 +1,6 @@
 import React from 'react';
 import defaultPng from "../../images/default.png";
-import './card.css'
+import './Card.css'
 
 type CardProps = {
   img: string,
