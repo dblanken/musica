@@ -1,15 +1,15 @@
 import React from 'react';
 
 type SongFilterProps = {
-  onSearchedCallback : Function
+  onSearched: Function
 }
 
-function SongFilter({ onSearchedCallback }: SongFilterProps) {
+function SongFilter({ onSearched }: SongFilterProps) {
   const [searchTerm, setsearchTerm] = React.useState('')
 
   React.useEffect(() => {
-    onSearchedCallback(searchTerm)
-  }, [searchTerm])
+    onSearched(searchTerm)
+  }, [searchTerm, onSearched])
 
   function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     setsearchTerm(e.currentTarget.value);

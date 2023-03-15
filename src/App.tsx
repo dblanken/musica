@@ -7,53 +7,56 @@ import CoverArt from './images/default.png'
 function App() {
   const [songs, setSongs] = React.useState([] as SongItem[])
 
-  function onSearched(searchTerm : string) {
-    const songs : SongItem[] = [
-      {
-        name: "Darglot of Camdor",
-        length: { minutes: 4, seconds: 24 },
-        link: "https://www.youtube.com/watch?v=ulOde9limgw",
-        copyrightYear: 2022,
-        yearWritten: 2005,
-        coverart: CoverArt
-      },
-      {
-        name: "Jamie (The Tiger Lily)",
-        length: { minutes: 3, seconds: 35 },
-        link: "https://www.youtube.com/watch?v=_ruaYOw0n54",
-        copyrightYear: 2015,
-        yearWritten: 2015,
-        coverart: CoverArt
-      },
-      {
-        name: "Shiloh and Me",
-        length: { minutes: 3, seconds: 35 },
-        link: "https://www.youtube.com/watch?v=ffSDJGnmsig",
-        copyrightYear: 2022,
-        yearWritten: 2022,
-        coverart: CoverArt
-      }
-    ]
+  const originalSongs: SongItem[] = [
+    {
+      name: "Darglot of Camdor",
+      length: { minutes: 4, seconds: 24 },
+      link: "https://www.youtube.com/watch?v=ulOde9limgw",
+      copyrightYear: 2022,
+      yearWritten: 2005,
+      coverart: CoverArt
+    },
+    {
+      name: "Jamie (The Tiger Lily)",
+      length: { minutes: 3, seconds: 35 },
+      link: "https://www.youtube.com/watch?v=_ruaYOw0n54",
+      copyrightYear: 2015,
+      yearWritten: 2015,
+      coverart: CoverArt
+    },
+    {
+      name: "Shiloh and Me",
+      length: { minutes: 3, seconds: 35 },
+      link: "https://www.youtube.com/watch?v=ffSDJGnmsig",
+      copyrightYear: 2022,
+      yearWritten: 2022,
+      coverart: CoverArt
+    }
+  ]
 
-    setSongs(filterSongsByName(songs, searchTerm));
+  function onSearched(searchTerm: string) {
+    setSongs(filterSongs(originalSongs, searchTerm, byNameStrategy))
   }
 
   return (
     <div className="App">
       <Header />
-      <SongFilter onSearchedCallback={onSearched} />
-      <SongList items={songs}/>
+      <SongFilter onSearched={onSearched} />
+      <SongList items={songs} />
     </div>
   );
 }
 
-function filterSongsByName(songs:SongItem[], searchTerm: string) : SongItem[] {
-  searchTerm = searchTerm.toLowerCase();
-
-  if (!searchTerm)
-    return songs;
-
-  return songs.filter(song => song.name.toLowerCase().includes(searchTerm)) || [];
+const filterSongs = (
+  songs: SongItem[],
+  searchTerm: string,
+  songStrategy: (song: SongItem, searchTerm: string) => boolean): SongItem[] => {
+  return songs.filter(song => songStrategy(song, searchTerm)) || [];
 }
+
+const byNameStrategy =
+  (song: SongItem, searchTerm: string) => {
+    return song.name.toLowerCase().includes(searchTerm);
+  }
 
 export default App;
