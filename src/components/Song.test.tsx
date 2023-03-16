@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Song from './Song';
-import { warn } from 'console';
 
 test('renders a song', () => {
   const songItem: SongItem = {
@@ -38,5 +37,4 @@ test('renders a song', () => {
   const songLink = screen.getByText("Listen");
   expect(songLink).toBeInTheDocument();
   expect(songLink.getAttribute('href')).toEqual(songItem.link);
-  // expect(songCoverart.getAttribute('href')).toEqual(songItem.coverart);
 });

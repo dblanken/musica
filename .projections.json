@@ -1,0 +1,14 @@
+{
+  "src/components/**/*.{js,jsx,ts,tsx}": {
+    "type": "react_component",
+    "template": "import React from 'react';\n\nfunction <filename>() {\n  return (\n    <div>\n      <h1>Hello World</h1>\n    </div>\n  );\n}\n\nexport default <filename>;\n"
+  },
+  "src/**/*.{js,jsx,ts,tsx}": {
+    "type": "source",
+    "template": "// @flow\n\nimport React from 'react';\nimport ReactDOM from 'react-dom';\n\nimport App from '<dirname>/components/<file>%s';\n\nReactDOM.render(\n  <App />, document.getElementById('root')\n);\n"
+  },
+  "test/**/*.{js,jsx,ts,tsx}": {
+    "type": "test",
+    "template": "import React from 'react';\nimport { render } from '@testing-library/react';\n\nimport <filename> from '<dirname>/components/<file>%s';\n\nit('renders without crashing', () => {\n  const { getByText } = render(<filename />);\n  const linkElement = getByText(/Hello World/i);\n  expect(linkElement).toBeInTheDocument();\n});\n"
+  }
+}
