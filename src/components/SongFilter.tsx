@@ -9,7 +9,7 @@ function SongFilter({ onSearched }: SongFilterProps) {
 
   React.useEffect(() => {
     onSearched(searchTerm)
-  }, [searchTerm, onSearched])
+  }, [searchTerm])
 
   function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     setsearchTerm(e.currentTarget.value);
