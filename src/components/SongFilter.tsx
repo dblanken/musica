@@ -1,15 +1,27 @@
 import React from 'react';
+import React, { useLayoutEffect } from 'react';
 
 type SongFilterProps = {
   onSearched: Function
 }
 
+const useCallbackRef = (callback: Function) => {
+  const callbackRef = React.useRef(callback)
+  useLayoutEffect(() => {
+    callbackRef.current = callback
+  }, [callback]);
+  return callbackRef;
+}
+
 function SongFilter({ onSearched }: SongFilterProps) {
   const [searchTerm, setsearchTerm] = React.useState('')
+  const savedOnSearched = useCallbackRef(onSearched);
 
   React.useEffect(() => {
     onSearched(searchTerm)
   }, [searchTerm])
+      onSearched(searchTerm)
+  }, [searchTerm, savedOnSearched])
 
   function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     setsearchTerm(e.currentTarget.value);
