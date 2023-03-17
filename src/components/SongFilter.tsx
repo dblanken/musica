@@ -1,4 +1,3 @@
-import React from 'react';
 import React, { useLayoutEffect } from 'react';
 
 type SongFilterProps = {
@@ -18,9 +17,12 @@ function SongFilter({ onSearched }: SongFilterProps) {
   const savedOnSearched = useCallbackRef(onSearched);
 
   React.useEffect(() => {
-    onSearched(searchTerm)
-  }, [searchTerm])
+    const debounce = setTimeout(() => {
       onSearched(searchTerm)
+    }, 500);
+
+    return () => clearTimeout(debounce);
+
   }, [searchTerm, savedOnSearched])
 
   function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
