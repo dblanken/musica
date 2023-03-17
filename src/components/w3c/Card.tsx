@@ -7,7 +7,7 @@ type CardProps = {
   title: string,
   url: string,
   urlText: string,
-  children: string | JSX.Element | JSX.Element[]
+  children?: string | JSX.Element | JSX.Element[]
 }
 
 function Card(props: CardProps) {
