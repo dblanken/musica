@@ -34,7 +34,7 @@ function SongFilter({ onSearched }: SongFilterProps) {
       <form>
         <div className="form-group">
           <label htmlFor="search">Filter by:</label>
-          <input type="text" id="search" onChange={onChangeHandler} className="form-control" />
+          <input type="search" placeholder="Type song name to filter" id="search" onChange={onChangeHandler} className="form-control" />
         </div>
       </form>
     </div>

@@ -3,6 +3,7 @@ import SongList from './components/SongList';
 import SongFilter from './components/SongFilter';
 import Header from './components/Header';
 import CoverArt from './images/default.png'
+import './App.css';
 
 function App() {
   const [songs, setSongs] = React.useState([] as SongItem[])

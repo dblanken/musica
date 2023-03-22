@@ -1,0 +1,9 @@
+.songList {
+    padding-top: 1em;
+}
+
+.filter {
+    background: #e6e6e6;
+    padding: 1em;
+    border-radius: 10px;
+}

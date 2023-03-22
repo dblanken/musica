@@ -12,7 +12,7 @@ type CardProps = {
 
 function Card(props: CardProps) {
   return (
-    <div className="small-card card col m-3">
+    <div className="small-card card col">
       <img src={propsImage(props.img)} className="card-img-top" alt={props.title} />
       <div className="card-body">
         <h5 className="card-title">{props.title}</h5>
